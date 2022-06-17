@@ -1,0 +1,24 @@
+# CHANGE THE NETWORK-ID-TO-JOIN
+Version: '3'
+
+services:
+  zerotier:
+    image: ubuntu-20.04:zerotier
+    hostname: zerotier-docker
+    container_name: zerotier
+    ports:
+      - 9993:9993/udp
+    restart: unless-stopped
+    volumes: 
+      - /var/lib/zerotier-one:/var/lib/zerotier-one
+    environment:
+      - "ZEROTIER= ### <NETWORK-ID-TO-JOIN> ####"
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    devices:
+      - /dev/net/tun
+    network_mode: host
+    command: bash -c "Echo 'joining network $${ZEROTIER}'
+                      zerotier-cli join $${ZEROTIER}
+                      zerotier-cli listnetworks"
