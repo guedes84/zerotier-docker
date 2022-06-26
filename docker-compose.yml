@@ -6,8 +6,6 @@ services:
     image: ubuntu-20.04:zerotier
     hostname: zerotier-docker
     container_name: zerotier
-    ports:
-      - 9993:9993/udp
     restart: unless-stopped
     volumes: 
       - /var/lib/zerotier-one:/var/lib/zerotier-one
