@@ -11,6 +11,7 @@ services:
       - /var/lib/zerotier-one:/var/lib/zerotier-one
     environment:
       - "ZEROTIER= ### <NETWORK-ID-TO-JOIN> ####"
+      - "URL_PROXY= ### <URL-TO-PROXY> ###"
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
