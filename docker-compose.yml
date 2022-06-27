@@ -7,8 +7,6 @@ services:
     hostname: zerotier-docker
     container_name: zerotier
     restart: unless-stopped
-    volumes: 
-      - /var/lib/zerotier-one:/var/lib/zerotier-one
     environment:
       - "ZEROTIER= ### <NETWORK-ID-TO-JOIN> ####"
       - "URL_PROXY= ### <URL-TO-PROXY> ###"
