@@ -8,13 +8,11 @@ services:
     container_name: zerotier
     restart: unless-stopped
     environment:
-      - "ZEROTIER= ### <NETWORK-ID-TO-JOIN> ####"
+      - "ZEROTIER=NETWORK-ID-TO-JOIN"
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
     devices:
       - /dev/net/tun
     network_mode: host
-    command: bash -c "Echo 'joining network $${ZEROTIER}'
-                      zerotier-cli join $${ZEROTIER}
-                      zerotier-cli listnetworks"
+    command: bash -c "$${ZEROTIER}"
